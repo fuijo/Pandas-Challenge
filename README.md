@@ -1,131 +1,78 @@
 # Pandas challenge
-# Instructions
-Using Pandas and Jupyter Notebook, create a report that includes the following data. Your report must include a written description of at least two observable trends based on the data.
+**PyCitySchools Analysis**
+This project utilized Python’s Pandas library to analyze school performance data, offering insights into district-wide standardized test scores and identifying trends based on various metrics. The findings were presented as comprehensive data summaries, complemented by a written analysis to inform strategic decisions on school budgets and priorities.
 
-Hint: Check out the sample solution called PyCitySchools_starter.ipynb located in the .zip file to review the desired format for this assignment.
+**Deliverables**
+**District Summary:**
 
-District Summary
-Perform the necessary calculations and then create a high-level snapshot of the district's key metrics in a DataFrame.
+**Metrics:**
+Total number of unique schools.
+Total number of students.
+Total budget.
+Average math and reading scores.
+Percentage of students passing math, reading, and both.
 
-Include the following:
+**Highlights:**
+A holistic view of district-wide performance to identify overall trends and areas for improvement.
 
-Total number of unique schools
+**School Summary:**
 
-Total students
+**Metrics:**
+Individual school performance, categorized by type, size, and per-student spending.
+Average test scores and percentage of students passing.
 
-Total budget
+**Insights:**
+Schools with higher per-student spending and smaller sizes generally demonstrated higher passing rates.
 
-Average math score
+**Performance Ranking:**
 
-Average reading score
+**Top 5 and Bottom 5 Schools:**
+Ranked based on the percentage of students passing both math and reading.
 
-% passing math (the percentage of students who passed math)
+**Key Observations:**
+High-performing schools were typically smaller with focused resources, while larger schools faced challenges in achieving higher passing rates.
 
-% passing reading (the percentage of students who passed reading)
+**Scores by Grade Level:**
 
-% overall passing (the percentage of students who passed math AND reading)
+**Math and Reading Scores by Grade:**
+Tracked average scores across 9th, 10th, 11th, and 12th grades for each school.
 
-School Summary
-Perform the necessary calculations and then create a DataFrame that summarizes key metrics about each school.
+**Trends:**
+Consistency in scores was observed in higher-performing schools, while variability was noted in lower-performing schools.
+Impact of Spending on Performance:
 
-Include the following:
+**Analysis:**
+Grouped schools into spending categories: <$585, $585-630, $630-645, and $645-680.
+Calculated average scores and passing rates for each category.
 
-School name
+**Findings:**
+Moderate spending ($585–$630 per student) achieved the best balance of cost and performance.
+Excessive spending did not guarantee significantly better outcomes.
+Impact of School Size on Performance:
 
-School type
+**Analysis:**
+Categorized schools as small (<1000), medium (1000–2000), and large (2000–5000).
 
-Total students
+**Findings:**
+Smaller schools consistently outperformed larger schools in all metrics, highlighting the benefits of personalized attention.
+Performance by School Type:
 
-Total school budget
+**Comparison:**
+Public vs. charter schools.
 
-Per student budget
+**Insights:**
+Charter schools demonstrated higher average scores and passing rates compared to public schools.
+Two Key Trends Identified
 
-Average math score
+**School Size and Performance:**
 
-Average reading score
+Smaller schools had higher passing rates in math and reading, likely due to more focused instruction and better resource allocation per student.
 
-% passing math (the percentage of students who passed math)
+**Spending vs. Outcomes:**
 
-% passing reading (the percentage of students who passed reading)
-
-% overall passing (the percentage of students who passed math AND reading)
-
-Highest-Performing Schools (by % Overall Passing)
-Sort the schools by % Overall Passing in descending order and display the top 5 rows.
-
-Save the results in a DataFrame called "top_schools".
-
-Lowest-Performing Schools (by % Overall Passing)
-Sort the schools by % Overall Passing in ascending order and display the top 5 rows.
-
-Save the results in a DataFrame called "bottom_schools".
-
-Math Scores by Grade
-Perform the necessary calculations to create a DataFrame that lists the average math score for students of each grade level (9th, 10th, 11th, 12th) at each school.
-
-Reading Scores by Grade
-Create a DataFrame that lists the average reading score for students of each grade level (9th, 10th, 11th, 12th) at each school.
-
-Scores by School Spending
-Create a table that breaks down school performance based on average spending ranges (per student).
-
-Use the code provided below to create four bins with reasonable cutoff values to group school spending.
-
-spending_bins = [0, 585, 630, 645, 680]
-labels = ["<$585", "$585-630", "$630-645", "$645-680"]
-Use pd.cut to categorize spending based on the bins.
-
-Use the following code to then calculate mean scores per spending range.
-
-spending_math_scores = school_spending_df.groupby(["Spending Ranges (Per Student)"])["Average Math Score"].mean()
-spending_reading_scores = school_spending_df.groupby(["Spending Ranges (Per Student)"])["Average Reading Score"].mean()
-spending_passing_math = school_spending_df.groupby(["Spending Ranges (Per Student)"])["% Passing Math"].mean()
-spending_passing_reading = school_spending_df.groupby(["Spending Ranges (Per Student)"])["% Passing Reading"].mean()
-overall_passing_spending = school_spending_df.groupby(["Spending Ranges (Per Student)"])["% Overall Passing"].mean()
-Use the scores above to create a DataFrame called spending_summary.
-
-Include the following metrics in the table:
-
-Average math score
-
-Average reading score
-
-% passing math (the percentage of students who passed math)
-
-% passing reading (the percentage of students who passed reading)
-
-% overall passing (the percentage of students who passed math AND reading)
-
-Scores by School Size
-Use the following code to create three bins with reasonable cutoff values to group school size.
-
-size_bins = [0, 1000, 2000, 5000]
-labels = ["Small (<1000)", "Medium (1000-2000)", "Large (2000-5000)"]
-Use pd.cut to categorize school size based on the bins.
-
-Use the following code to then calculate mean scores per size range.
-
-size_math_scores = school_size_df.groupby(["School Size"])["Average Math Score"].mean()
-size_reading_scores = school_size_df.groupby(["School Size"])["Average Reading Score"].mean()
-size_passing_math = school_size_df.groupby(["School Size"])["% Passing Math"].mean()
-size_passing_reading = school_size_df.groupby(["School Size"])["% Passing Reading"].mean()
-size_overall_passing = school_size_df.groupby(["School Size"])["% Overall Passing"].mean()
-Create a DataFrame called size_summary that breaks down school performance based on school size (small, medium, or large).
-# Conclusion
-This report provides a comprehensive analysis of the performance metrics for 15 unique schools, encompassing a student population of 39,170. The findings reveal critical insights into how budget allocations, school sizes, and school types impact academic performance.
-
-Key takeaways include:
-
-Budget Impact: Schools with lower per-student budgets consistently exhibit lower average scores and passing rates. This suggests that adequate funding is essential for enhancing educational outcomes, highlighting the need for targeted financial support in underfunded institutions.
-
-School Size Influence: Smaller schools tend to demonstrate higher passing rates in both math and reading. This may indicate that smaller class sizes allow for more personalized instruction, fostering better student engagement and learning experiences.
-
-Type of School: Charter schools outperform district schools in all performance metrics, suggesting that different educational models may have distinct advantages. This insight could inform policy decisions and resource allocation.
-
-Overall, the data underscores the need for continued evaluation of the factors influencing student performance. By addressing budget disparities and exploring the benefits of smaller class sizes, educational leaders can develop targeted strategies to improve academic achievement across the board. This report serves as a foundation for future discussions aimed at enhancing the quality of education and ensuring that all students have access to the resources they need to succeed.
-
-
-
+Moderate per-student spending produced better performance, while excessive spending showed diminishing returns, indicating that strategic budgeting is more critical than simply increasing expenditures.
+Summary
+The analysis provided a detailed understanding of district and school-level performance, offering actionable insights for budget allocation and strategic planning. By leveraging Pandas for data manipulation and visualization, this project illustrated the power of data-driven decision-making in the education sector.
 
 
 
